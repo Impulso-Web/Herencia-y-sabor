@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Herencia y Sabor | Arepas Caseras</title>
+    <style>
+        /* CONFIGURACIÓN DE COLORES Y ESTILOS BASE */
+        :root {
+            --dorado: #F2B705;
+            --naranja: #F27405;
+            --oscuro: #333333;
+            --blanco: #ffffff;
+            --crema: #fdfaf5;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--crema);
+            color: var(--oscuro);
+            line-height: 1.6;
+        }
+
+        /* NAVEGACIÓN */
+        nav {
+            background-color: var(--blanco);
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            font-weight: bold;
+            font-size: 1.5rem;
+            color: var(--naranja);
+        }
+
+        /* SECCIÓN HERO (INICIO) */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                        url('https://images.unsplash.com');
+            background-size: cover;
+            background-position: center;
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 20px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        /* BOTONES */
+        .btn {
+            background-color: var(--naranja);
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: 0.3s;
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: var(--dorado);
+            transform: scale(1.05);
+        }
+
+        /* CONTENEDOR PRINCIPAL */
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            padding: 40px 20px;
+        }
+
+        h2 {
+            text-align: center;
+            color: var(--naranja);
+            margin-bottom: 30px;
+            font-size: 2rem;
+        }
+
+        /* MENÚ DE AREPAS */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            transition: 0.3s;
+        }
+
+        .card:hover { transform: translateY(-5px); }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-info {
+            padding: 20px;
+        }
+
+        .price {
+            color: var(--naranja);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* CÓMO ORDENAR */
+        .proceso {
+            background-color: var(--dorado);
+            color: var(--oscuro);
+            padding: 50px 20px;
+            text-align: center;
+            margin: 40px 0;
+            border-radius: 20px;
+        }
+
+        .pasos-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 20px;
+        }
+
+        .paso {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .paso-numero {
+            font-size: 2.5rem;
+            font-weight: bold;
+            display: block;
+        }
+
+        /* TESTIMONIOS */
+        .testimonios {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            font-style: italic;
+        }
+
+        .testimonio-item {
+            background: #fff;
+            padding: 20px;
+            border-left: 5px solid var(--naranja);
+            border-radius: 5px;
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--oscuro);
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        /* WHATSAPP FLOTANTE */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #25d366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+            z-index: 1000;
+            font-size: 30px;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">Herencia y Sabor</div>
+        <a href="https://wa.me" class="btn" style="padding: 8px 15px;">Pedir Ahora</a>
+    </nav>
+
+    <header class="hero">
+        <h1>Arepas Caseras que Encantan</h1>
+        <p>Sabor tradicional, ingredientes frescos y el toque secreto de la abuela.</p>
+        <a href="#menu" class="btn">Ver Menú de Hoy</a>
+    </header>
+
+    <div class="container">
+        <h2>Nuestra Propuesta</h2>
+        <p style="text-align: center; max-width: 700px; margin: 0 auto 40px;">
+            En <strong>Herencia y Sabor</strong>, no solo vendemos comida; rescatamos la tradición. Cada arepa es asada al punto perfecto, usando maíz seleccionado y rellenos generosos hechos con amor.
+        </p>
+
+        <h2 id="menu">Nuestras Especialidades</h2>
+        <div class="menu-grid">
+            <!-- Arepa 1 -->
+            <div class="card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhKMYMMwxOox5zXoSTvoorHEED0QFJtkapmg&s" alt="Arepa con Queso">
+                <div class="card-info">
+                    <h3>La Tradicional con Queso</h3>
+                    <p>Mucha quajada por encima con mantequilla y ese toque de sal que tanto nos gusta.</p>
+                    <p class="price">$3.000</p>
+                </div>
+            </div>
+            <!-- Arepa 2 -->
+            <div class="card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmsJeBCfTIVpitfq59u11musz79yZ2HuUkQA&s" alt="Arepa con mantequilla">
+                <div class="card-info">
+                    <h3>Poderosa (Con mantequilla)</h3>
+                    <p>Mantequilla de la buena.</p>
+                    <p class="price">$1.500</p>
+                </div>
+            </div>
+            <!-- Arepa 3 -->
+            <div class="card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbJceESiyZ1iP_1u9RASa1hheinr8xpqcQjg&s" alt="Arepa tradicional">
+                <div class="card-info">
+                    <h3>tradicional lo que mas nos gusta</h3>
+                    <p>Maíz original, hechas al carbon.</p>
+                    <p class="price">$1.000</p>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 40px;">
+            <a href="https://wa.me" class="btn">Hacer Pedido por WhatsApp</a>
+        </div>
+    </div>
+
+    <section class="proceso">
+        <div class="container">
+            <h2>Cómo ordenar</h2>
+            <div class="pasos-container">
+                <div class="paso">
+                    <span class="paso-numero">1</span>
+                    <h3>Elige tu arepa</h3>
+                    <p>Revisa nuestro menú y elige tu favorita.</p>
+                </div>
+                <div class="paso">
+                    <span class="paso-numero">2</span>
+                    <h3>Escríbenos</h3>
+                    <p>Envía un mensaje al WhatsApp 314 7656637.</p>
+                </div>
+                <div class="paso">
+                    <span class="paso-numero">3</span>
+                    <h3>¡Disfruta!</h3>
+                    <p>Recibe tu pedido caliente en la puerta de tu casa.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <h2>Lo que dicen nuestros clientes</h2>
+        <div class="testimonios">
+            <div class="testimonio-item">
+                "Las mejores arepas que he probado en mucho tiempo. El queso es delicioso y llegan súper calientes."
+                <br><strong>- Carlos M.</strong>
+            </div>
+            <div class="testimonio-item">
+                "Se nota que son caseras. La arepa con queso es mi debilidad, ¡100% recomendadas!"
+                <br><strong>- Andrea R.</strong>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <h3>Herencia y Sabor</h3>
+        <p>Llevando tradición a tu mesa</p>
+        <p>📍 Pereira, Colombia</p>
+        <p>📞 Pedidos: 314 7656637</p>
+        <div style="margin-top: 20px; font-size: 0.8rem; opacity: 0.7;">
+            &copy; 2024 Todos los derechos reservados.
+        </div>
+    </footer>
+
+    <!-- Botón Flotante de WhatsApp -->
+    <a href="https://wa.me" class="whatsapp-float" target="_blank">
+        <svg style="width:35px;height:35px" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.23 8.23 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23-1.48 0-2.93-.39-4.19-1.15l-.3-.17-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23m4.75 11.5c-.26-.13-1.53-.76-1.77-.85-.23-.09-.4-.13-.57.13-.17.26-.66.85-.81 1.02-.15.17-.3.19-.56.06-.26-.13-1.1-.4-2.1-1.29-.77-.69-1.3-1.54-1.45-1.79-.15-.26-.02-.39.11-.52.12-.11.26-.3.39-.45.13-.15.17-.26.26-.43.09-.17.04-.32-.02-.45-.06-.13-.57-1.37-.78-1.88-.2-.5-.42-.43-.57-.44h-.49c-.17 0-.45.06-.68.32-.24.25-.9.88-.9 2.15s.93 2.51 1.06 2.68c.13.17 1.83 2.8 4.44 3.93.62.27 1.1.43 1.48.55.62.2 1.19.17 1.64.1.5-.07 1.53-.63 1.74-1.24.21-.61.21-1.13.15-1.24-.06-.11-.22-.18-.48-.31Z" />
+        </svg>
+    </a>
+
+</body>
+</html>
